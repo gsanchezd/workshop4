@@ -1,0 +1,18 @@
+<% if @q == "secreto" %> 
+  <p> Eres el mejor </p>
+<% end %>
+
+<h1>Tu eres el index?</h1>
+
+  <% @pins.each do |pin| %>
+      <h5> <%= pin.name %> </h5>
+      <%= image_tag(pin.photo) %>
+      <p><%= pin.description %> </p>
+      <%= link_to 'Show', pin, :class => 'btn btn-primary', :style=>'color:white' %>
+      <%= link_to 'Edit', edit_pin_path(pin) %>
+      <%= link_to 'Destroy', pin, :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+<br>
+
+<%= link_to 'New Pin', new_pin_path %>

@@ -1,4 +1,7 @@
 Workshop4presencial::Application.routes.draw do
+  devise_for :users
+  resources :pins
+
   get "welcome/index"
   get "welcome/nosotros"
   # The priority is based upon order of creation: first created -> highest priority.

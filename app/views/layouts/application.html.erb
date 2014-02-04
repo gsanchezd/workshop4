@@ -33,7 +33,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li class="active"><a href="<%= welcome_nosotros_path%>">Nosotros</a></li>
-      <li><a href="#">Link</a></li>
+      <li><a href="<%= pins_path %>">Pins</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -54,20 +54,17 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
+      <% if current_user.nil? %>
+        <li><a href="<%= new_user_session_path %>"> Ingreso </a></li>
+      <% else %>
+        <li><a href="#"> <%= current_user.email %> </a></li>
+        <li><a href="<%= destroy_user_session_path %>" data-method="delete"> Salir </a></li>
+      <% end %>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
 <%= yield %>
 
 </body>
